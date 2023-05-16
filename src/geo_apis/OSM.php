@@ -1,6 +1,8 @@
 <?php 
 class OSM implements GeoApi
 {
+
+	private $endPoint = 'https://nominatim.openstreetmap.org/search';
 	public function __construct()
 	{
 
@@ -25,7 +27,7 @@ class OSM implements GeoApi
 
 	public function getEndPointAndData():array
 	{
-		$endPoint = 'https://nominatim.openstreetmap.org/search?q='.urlencode($this->address).'&format=json&polygon=1&addressdetails=1';
+		$endPoint = $this->endPoint.'?q='.urlencode($this->address).'&format=json&polygon=1&addressdetails=1';
 		return ['endPoint' => $endPoint , 'post' => []];
 	}
 	public function extractResult($res):array

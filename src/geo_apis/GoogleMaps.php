@@ -1,12 +1,10 @@
 <?php 
-// https://maps.googleapis.com/maps/api/geocode/json?address=Washington&key=YOUR_API_KEY
-// https://developers.google.com/maps/documentation/geocoding/requests-geocoding#results
-// https://nominatim.openstreetmap.org/search?q=135+pilkington+avenue,+birmingham&format=json&polygon=1&addressdetails=1
 
 class GoogleMaps implements GeoApi
 {
 	public $address = null;
 	private $api_key = 'XXXXXXXXXXXXXXX';
+	private $endPoint = 'https://maps.googleapis.com/maps/api/geocode/json';
 	public function __construct()
 	{
 
@@ -17,7 +15,8 @@ class GoogleMaps implements GeoApi
 		$this->address  =$address;
 		$data = $this->getEndPointAndData();
 		$endPoint = $data['endPoint'];
-		$postData = $data['post'];
+		$postData = isset($data['post'])?$data['post']:[];
+		$authourizationHeader = isset($data['auth'])?$data['auth']:[];
 		$response = Helper::curlFetch($endPoint , $postData);
 		if($response['status']==OK)
 		{
@@ -29,7 +28,7 @@ class GoogleMaps implements GeoApi
 
 	public function getEndPointAndData():array
 	{
-		$endPoint = 'https://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($this->address).'&key='.$this->api_key;
+		$endPoint = $this->endPoint.'?address='.urlencode($this->address).'&key='.$this->api_key;
 		return ['endPoint' => $endPoint , 'post' => []];
 	}
 	public function extractResult($raw):array

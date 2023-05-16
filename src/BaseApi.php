@@ -1,7 +1,16 @@
 <?php 
 class BaseApi
 {
-  public function getCoordinates($address , $apis = [])
+
+  /*
+
+    @method getCoordinates 
+    @params String $address
+    Array $apis - Array containing Geo Aapis ClassName(s) Names Must Match With Config - GEO_APIS. If empty BaseApi will give results from all APIS.
+
+
+  */
+  public function getCoordinates(string $address , $apis = [])
   {
 
     $useApis = [];
