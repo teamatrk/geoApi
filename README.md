@@ -26,7 +26,7 @@ Request Body => {address: "Janakpuri, New Delhi" , action: "coordinates"}
 
       1) (string)  address 
       
-      2) (array) apis -> className of apis to include in the result set, leave blank to include all integrated apis 
+      2) (optional) (array) apis -> className of apis to include in the result set, leave blank to include all integrated apis 
 Response Body => 
       { data
 : 
