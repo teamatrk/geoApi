@@ -14,7 +14,55 @@ Call GetCoordinates Function
 
       $result = $baseApi->getCoordinates($address);
 
+# Use Direct Api
 
+Place the entire code in your project directory
+
+End Point - http://yourwebsite.com/projectDirectory/src/action.php
+
+Api - coordinates
+
+Request Body => {address: "Janakpuri, New Delhi" , action: "coordinates"}
+      
+Response Body => 
+      { data
+: 
+{GoogleMaps: {status: 0, message: "The provided API key is invalid. ", api_name: "Google Maps"},…}
+GoogleMaps
+: 
+{status: 0, message: "The provided API key is invalid. ", api_name: "Google Maps"}
+api_name
+: 
+"Google Maps"
+message
+: 
+"The provided API key is invalid. "
+status
+: 
+0
+OSM
+: 
+{status: 1, message: "Success", coordinates: {lat: "28.6517178", lng: "77.2219388"},…}
+api_name
+: 
+"Open Street Maps"
+coordinates
+: 
+{lat: "28.6517178", lng: "77.2219388"}
+message
+: 
+"Success"
+status
+: 
+1
+message
+: 
+"Success"
+status
+: 
+1 }
+      
+      
 # Add Additional Apis 
 
 1) Create a class in src/geo_apis directory implementing the GeoApi.
