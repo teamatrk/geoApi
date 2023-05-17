@@ -27,7 +27,7 @@ class OSM implements GeoApi
 
 	public function getEndPointAndData():array
 	{
-		$endPoint = $this->endPoint.'?q='.urlencode($this->address).'&format=json&polygon=1&addressdetails=1';
+		$endPoint = $this->endPoint.'?q='.urlencode($this->address).'&email=see.vijit@gmail.com&format=json&polygon=1&addressdetails=1';
 		return ['endPoint' => $endPoint , 'post' => []];
 	}
 	public function extractResult($res):array

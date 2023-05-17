@@ -4,7 +4,7 @@ require_once('autoloader.php');
 
 
 $address = isset($_REQUEST['address'])?Helper::cleanInput($_REQUEST['address']):"";
-$apis = isset($_REQUEST['apis'])?Helper::cleanInput($_REQUEST['apis']):"";
+$apis = isset($_REQUEST['apis'])?Helper::cleanInput($_REQUEST['apis']):[];
 $action = isset($_REQUEST['action'])?Helper::cleanInput($_REQUEST['action']):"";
 
 $output = [];

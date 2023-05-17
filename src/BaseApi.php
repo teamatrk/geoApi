@@ -18,7 +18,7 @@ class BaseApi
     {
         foreach(GEO_APIS as $k=>$v)
         {
-          if(in_array($v , $apis))
+          if(in_array($v['className'] , $apis))
           {
             $useApis[$k] = $v;
           }
@@ -34,7 +34,7 @@ class BaseApi
         $obj = new $v['className']();
         $result = $obj->getCoordinates($address);
         $result['api_name'] = $v['name'];
-        $output[$v['name']] = $result;
+        $output[$v['className']] = $result;
     }
     return $output;
   }
